@@ -2,6 +2,12 @@ const { Router } = require("express");
 
 const signupRouter = Router();
 
-signupRouter.get("", (req, res) => {});
+const {
+  signupRouteGet,
+  signupRoutePost,
+} = require("../controllers/signupController");
+
+signupRouter.get("", signupRouteGet);
+signupRouter.post("", signupRoutePost);
 
 module.exports = signupRouter;
