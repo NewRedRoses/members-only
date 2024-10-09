@@ -1,9 +1,7 @@
 const { Router } = require("express");
-const db = require("../db/queries");
 const indexRouter = Router();
 
-indexRouter.get("", (req, res) => {
-  res.render("index");
-});
+const { indexRouteGet } = require("../controllers/indexController");
+indexRouter.get("", indexRouteGet);
 
 module.exports = indexRouter;
