@@ -9,7 +9,13 @@ async function addUserToDb(first_name, last_name, email, password) {
     console.log(err);
   }
 }
+async function getPosts() {
+  const query = `SELECT * FROM posts LIMIT 10`;
+  const { rows } = await pool.query(query);
+  return rows;
+}
 
 module.exports = {
   addUserToDb,
+  getPosts,
 };
