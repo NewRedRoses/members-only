@@ -14,8 +14,20 @@ async function getPosts() {
   const { rows } = await pool.query(query);
   return rows;
 }
+async function getUsernameFromDB(username) {
+  const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [
+    username,
+  ]);
+  return rows;
+}
+async function getUserId(id) {
+  const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
+  return rows;
+}
 
 module.exports = {
   addUserToDb,
   getPosts,
+  getUsernameFromDB,
+  getUserId,
 };
