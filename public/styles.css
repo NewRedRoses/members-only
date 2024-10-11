@@ -31,3 +31,22 @@ body {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 5%;
+  background-color: #e4e9ec;
+  font-weight: bold;
+}
+.submit-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: #16a085;
+  height: 24px;
+  border: 0px;
+}
