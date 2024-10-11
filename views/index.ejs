@@ -8,12 +8,14 @@
   </head>
   <body>
     <%- include("./partials/navbar.ejs") %> 
+    <div class="content">
     <% if (locals.user) {%>
     <h1>Welcome back <%= user.first_name %></h1>
     <a href="/logout">Logout</a>
-
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur praesentium necessitatibus ducimus beatae provident illo doloremque voluptatem quod, rem voluptatibus?</p>
     <% } else {%>
     <h1>Please login</h1>
     <% } %>
+    </div>
   </body>
 </html>

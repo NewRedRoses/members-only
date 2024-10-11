@@ -8,6 +8,7 @@
   </head>
   <body>
     <%- include("./partials/navbar.ejs") %>
+    <div class="content">
     <h1>Login</h1>
     <form action="/login" method="POST">
       <label for="username">Email</label>
@@ -27,5 +28,6 @@
       />
       <button class="login-btn">Login</button>
     </form>
+        </div>
   </body>
 </html>

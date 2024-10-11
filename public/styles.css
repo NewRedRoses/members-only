@@ -21,3 +21,13 @@ body {
 .navbar a {
   color: #2c3e50;
 }
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 70%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
