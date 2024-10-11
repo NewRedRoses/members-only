@@ -17,11 +17,13 @@ const PORT = 3000;
 const indexRouter = require("./routes/indexRouter");
 const clubsRouter = require("./routes/clubsRouter");
 const loginRouter = require("./routes/loginRouter");
+const logoutRouter = require("./routes/logoutRouter");
 const signupRouter = require("./routes/signupRouter");
 
 app.use("", indexRouter);
 app.use("/clubs", clubsRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 app.use("/signup", signupRouter);
 
 app.listen(PORT, () => console.log(`Launched on ${PORT}`));
