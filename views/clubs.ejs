@@ -9,9 +9,14 @@
 <body>
     <%- include("./partials/navbar.ejs") %>
     <div class="content">
-    <h1>Clubs</h1>
-</div>
-<script src="https://unpkg.com/lucide@latest"></script>
+        <h1>Clubs</h1>
+        <ul class="clubs-container">
+            <% clubs.forEach(club => { %> 
+                <li class="club-card"><%= club.name %> </li>
+            <% }) %>
+        </ul>
+    </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
     </script>

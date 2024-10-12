@@ -24,10 +24,17 @@ async function getUserId(id) {
   const { rows } = await pool.query("SELECT * FROM users WHERE id = $1", [id]);
   return rows;
 }
+async function getClubs() {
+  const query = `SELECT * FROM clubs`;
+  const values = [];
+  const { rows } = await pool.query(query, values);
+  return rows;
+}
 
 module.exports = {
   addUserToDb,
   getPosts,
   getUsernameFromDB,
   getUserId,
+  getClubs,
 };
