@@ -58,6 +58,9 @@ ul.posts-container {
   gap: 20px;
   max-width: 450px;
 }
+.post {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
 .post .post-header {
   background-color: #16a085;
   border-top-left-radius: 10px;
