@@ -50,3 +50,41 @@ body {
   height: 24px;
   border: 0px;
 }
+ul.posts-container {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 450px;
+}
+.post .post-header {
+  background-color: #16a085;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 1.3em;
+}
+.post-author,
+.post-club-name {
+  font-weight: bold;
+}
+.post-club-name {
+  font-style: italic;
+}
+.post .post-content {
+  padding: 10px 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  background-color: #ffffff;
+  gap: 10px;
+  flex-direction: column;
+  text-align: justify;
+}
+.post-content .post-timestamp {
+  display: flex;
+  justify-content: flex-end;
+}
