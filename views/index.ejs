@@ -14,7 +14,7 @@
     <a href="/logout">Logout</a>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur praesentium necessitatibus ducimus beatae provident illo doloremque voluptatem quod, rem voluptatibus?</p>
     <% } else {%>
-    <h1>Please login</h1>
+    <h1>Please <a href="login" title="log-in">login</a> to add a post</h1>
     <ul class="posts-container">
       <% posts.forEach(post => { %>
           <li>
@@ -34,5 +34,9 @@
       <% } %>
     </ul>
     </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
