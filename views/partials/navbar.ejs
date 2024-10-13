@@ -4,6 +4,16 @@
     <li class="navbar-item"><a href="clubs" title="Clubs"><i data-lucide="users"></i></a></li>
   </ul>
   <ul class="right-icons">
-    <li class="navbar-item"><a href="login" title="Log in"><i data-lucide="log-in"></i></a> </li>
+    <% if (currentUser) { %>
+      <li class="navbar-item">
+        <a href="logout" title="Log Out">
+          <i data-lucide="log-out"></i>
+        </a> 
+      </li>
+    <% } else { %>
+        <a href="login" title="Log in">
+          <i data-lucide="log-in"></i>
+        </a> 
+      <% } %>
   </ul>
 </div>
