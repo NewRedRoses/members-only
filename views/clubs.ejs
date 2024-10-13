@@ -22,7 +22,9 @@
                         <div class="club-card-description">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, dolorum?
                         </div>
-                        <button class="club-card-join-btn">Join</button>
+                        <a href=<%-`/clubs/${club.id}/join`%>>
+                            <button class="club-card-join-btn">Join</button>
+                        </a>
                      </li>
             <% }) %>
         </ul>

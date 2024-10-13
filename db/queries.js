@@ -30,6 +30,11 @@ async function getClubs() {
   const { rows } = await pool.query(query, values);
   return rows;
 }
+async function updateUserClub(newClubId, userId) {
+  const query = `UPDATE users SET club_id = $1 WHERE id = $2;`;
+  const values = [newClubId, userId];
+  await pool.query(query, values);
+}
 
 module.exports = {
   addUserToDb,
@@ -37,4 +42,5 @@ module.exports = {
   getUsernameFromDB,
   getUserId,
   getClubs,
+  updateUserClub,
 };
