@@ -15,6 +15,11 @@ app.use(express.urlencoded({ extended: false }));
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 const PORT = 3000;
 
 const indexRouter = require("./routes/indexRouter");
