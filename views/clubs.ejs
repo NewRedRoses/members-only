@@ -9,10 +9,21 @@
 <body>
     <%- include("./partials/navbar.ejs") %>
     <div class="content">
-        <h1>Clubs</h1>
+        <h1 class="greeting">Clubs</h1>
         <ul class="clubs-container">
             <% clubs.forEach(club => { %> 
-                <li class="club-card"><%= club.name %> </li>
+                    <li class="club-card">
+                        <div class="club-card-header">
+                            <%= club.name %>
+                        </div>
+                        <div class="club-card-members">
+                            20
+                        </div>
+                        <div class="club-card-description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, dolorum?
+                        </div>
+                        <button class="club-card-join-btn">Join</button>
+                     </li>
             <% }) %>
         </ul>
     </div>

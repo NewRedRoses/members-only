@@ -35,12 +35,21 @@ body {
 .signup-form {
   display: flex;
   flex-direction: column;
+  color: #2c3e50;
   gap: 10px;
   padding: 10px 20px;
   border-radius: 5%;
   background-color: #e4e9ec;
   font-weight: bold;
 }
+.greeting,
+.post-content {
+  color: #2c3e50;
+}
+a.sign-up {
+  color: #3498db;
+}
+
 .login-form input,
 .signup-form input {
   font-size: 1.1rem;
@@ -98,4 +107,30 @@ ul.posts-container {
 .post-content .post-timestamp {
   display: flex;
   justify-content: flex-end;
+}
+ul.clubs-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 0px;
+  flex-direction: column;
+  list-style-type: none; /* Remove bullets */
+  gap: 10px;
+}
+.club-card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 5px;
+  border: 1px solid #bdc3c7;
+  background-color: #ffffff;
+}
+.club-card-header {
+  font-weight: bold;
+}
+.club-card-description {
+  text-align: justify;
+}
+.club-card-join-btn {
+  width: 120px;
+  cursor: pointer;
 }
