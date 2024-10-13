@@ -1,0 +1,17 @@
+<ul class="posts-container">
+      <% posts.forEach(post => { %>
+          <li>
+            <div class="post">
+              <div class="post-header">
+                <span class="post-author">****</span>
+                posted on
+                <span class="post-club-name">club-name</span>
+              </div>
+              <div class="post-content">
+                <div class="post-message"><%= post.message %></div>
+                <div class="post-timestamp"><%= `${post.date_posted.getMonth()}/${post.date_posted.getDate()}/${post.date_posted.getFullYear()}` %></div>
+              </div>
+            </div> 
+          </li>
+      <% }) %>
+    </ul>

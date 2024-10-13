@@ -11,28 +11,19 @@
     <div class="content">
     <% if (locals.user) {%>
     <h1 class="greeting">Welcome back <%= user.first_name %></h1>
-    <a href="/logout">Logout</a>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur praesentium necessitatibus ducimus beatae provident illo doloremque voluptatem quod, rem voluptatibus?</p>
+    <div class="club-message-container">
+      <label for="club-message">Add a new message to -current-user-group-name-</label>  
+      <form action="" method="POST">
+        <textarea name="club-message" id="club-message"  placeholder=""></textarea>
+        <button type="submit" class="post-message-btn">Post</button>
+      </form>
+      <div class="divider"></div>
+      <%- include("./partials/loadAllPosts") %>
     <% } else {%>
-    <h1 class="signup-link">Please <a href="login" title="log-in">login</a> to add a post</h1>
-    <ul class="posts-container">
-      <% posts.forEach(post => { %>
-          <li>
-            <div class="post">
-              <div class="post-header">
-                <span class="post-author">****</span>
-                posted on
-                <span class="post-club-name">club-name</span>
-              </div>
-              <div class="post-content">
-                <div class="post-message"><%= post.message %></div>
-                <div class="post-timestamp"><%= `${post.date_posted.getMonth()}/${post.date_posted.getDate()}/${post.date_posted.getFullYear()}` %></div>
-              </div>
-            </div> 
-          </li>
-      <% }) %>
-      <% } %>
-    </ul>
+        <h1 class="signup-link">Please <a href="login" title="log-in">login</a> to add a post</h1>
+        <div class="divider"></div>
+        <%- include("./partials/loadAllPosts") %>
+    <% } %>
     </div>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
