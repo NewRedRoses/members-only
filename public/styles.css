@@ -134,3 +134,7 @@ ul.clubs-container {
   width: 120px;
   cursor: pointer;
 }
+.divider {
+  padding-top: 10px;
+  border-bottom: 1px solid #bdc3c7;
+}
