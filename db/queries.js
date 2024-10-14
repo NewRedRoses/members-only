@@ -31,8 +31,13 @@ async function getClubs() {
   return rows;
 }
 async function updateUserClub(newClubId, userId) {
-  const query = `UPDATE users SET club_id = $1 WHERE id = $2;`;
+  const query = `UPDATE users SET club_id = $1 WHERE id = $2`;
   const values = [newClubId, userId];
+  await pool.query(query, values);
+}
+async function createPost(message, title, userId, clubId) {
+  const query = `INSERT INTO posts(message,title, poster_user_id,club_id) VALUES($1,$2,$3,$4)`;
+  const values = [message, title, userId, clubId];
   await pool.query(query, values);
 }
 
@@ -43,4 +48,5 @@ module.exports = {
   getUserId,
   getClubs,
   updateUserClub,
+  createPost,
 };

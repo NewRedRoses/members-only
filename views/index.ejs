@@ -10,19 +10,27 @@
     <%- include("./partials/navbar.ejs") %> 
     <div class="content">
     <% if (locals.user) {%>
-    <h1 class="greeting">Welcome back <%= user.first_name %></h1>
-    <div class="club-message-container">
-      <label for="club-message">Add a new message to -current-user-group-name-</label>  
-      <form action="" method="POST">
-        <textarea name="club-message" id="club-message"  placeholder=""></textarea>
-        <button type="submit" class="post-message-btn">Post</button>
-      </form>
+        <h1 class="greeting">Most Recent Posts</h1>
+        <div class="club-message-container">
+          <form action="" method="POST" class="add-post-form">
+            <div class="post-title-container">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title" maxlength="50" placeholder="The title is optional!">
+            </div>
+
+            <div class="post-message-container">
+              <label for="message">Message:</label>
+            <textarea name="message" id="message"  placeholder="Type the message you want the world to hear here!" required></textarea>
+            </div>
+            
+            <button type="submit" class="post-message-btn">Post</button>
+          </form>
       <div class="divider"></div>
       <%- include("./partials/loadAllPosts") %>
     <% } else {%>
-        <h1 class="signup-link">Please <a href="login" title="log-in">login</a> to add a post</h1>
-        <div class="divider"></div>
-        <%- include("./partials/loadAllPosts") %>
+            <h1 class="signup-link">Please <a href="login" title="log-in">login</a> to add a post</h1>
+            <div class="divider"></div>
+            <%- include("./partials/loadAllPosts") %>
     <% } %>
     </div>
     <script src="https://unpkg.com/lucide@latest"></script>

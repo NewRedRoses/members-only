@@ -138,3 +138,29 @@ ul.clubs-container {
   padding-top: 10px;
   border-bottom: 1px solid #bdc3c7;
 }
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+.post-title-container {
+  display: flex;
+  flex-direction: column;
+}
+.post-title {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+.add-post-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  gap: 10px;
+}
+.add-post-form label {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+.add-post-form button {
+  width: fit-content;
+}
