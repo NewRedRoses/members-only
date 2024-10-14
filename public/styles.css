@@ -175,3 +175,17 @@ textarea {
 .add-post-form button:hover {
   background-color: #21b698;
 }
+.add-post-form input,
+.add-post-form textarea {
+  border: 1px solid #bdc3c7;
+  background-color: #ffffff;
+  color: #2c3e50;
+  font-family: Inter;
+}
+.add-post-form input {
+  height: 30px;
+  font-size: 1em;
+}
+.add-post-form textarea {
+  height: 100px;
+}
