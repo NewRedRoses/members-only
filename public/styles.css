@@ -163,4 +163,15 @@ textarea {
 }
 .add-post-form button {
   width: fit-content;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #16a085;
+  color: #ffffff;
+  border-radius: 10px;
+  border: 0;
+  padding: 5px 10px;
+}
+.add-post-form button:hover {
+  background-color: #21b698;
 }
