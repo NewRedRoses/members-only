@@ -28,6 +28,10 @@ async function getClubs() {
   const query = `SELECT * FROM clubs`;
   const values = [];
   const { rows } = await pool.query(query, values);
+  for (const club of rows) {
+    const clubSize = { size: await getClubMemberAmount(club.id) };
+    Object.assign(club, clubSize);
+  }
   return rows;
 }
 async function updateUserClub(newClubId, userId) {
@@ -40,6 +44,12 @@ async function createPost(message, title, userId, clubId) {
   const values = [message, title, userId, clubId];
   await pool.query(query, values);
 }
+async function getClubMemberAmount(clubId) {
+  const query = `SELECT COUNT(*) FROM users WHERE club_id = $1`;
+  const values = [clubId];
+  const { rows } = await pool.query(query, values);
+  return rows[0].count;
+}
 
 module.exports = {
   addUserToDb,
@@ -49,4 +59,5 @@ module.exports = {
   getClubs,
   updateUserClub,
   createPost,
+  getClubMemberAmount,
 };
