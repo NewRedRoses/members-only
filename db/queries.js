@@ -50,7 +50,18 @@ async function getClubMemberAmount(clubId) {
   const { rows } = await pool.query(query, values);
   return rows[0].count;
 }
-
+async function getClubInfo(clubId) {
+  const query = `SELECT * from clubs where id = $1`;
+  const values = [clubId];
+  const { rows } = await pool.query(query, values);
+  return rows[0];
+}
+async function getPostsFromClubId(clubId) {
+  const query = `SELECT * FROM posts WHERE club_id = $1`;
+  const values = [clubId];
+  const { rows } = await pool.query(query, values);
+  return rows;
+}
 module.exports = {
   addUserToDb,
   getPosts,
@@ -60,4 +71,6 @@ module.exports = {
   updateUserClub,
   createPost,
   getClubMemberAmount,
+  getClubInfo,
+  getPostsFromClubId,
 };

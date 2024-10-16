@@ -14,7 +14,7 @@
             <% clubs.forEach(club => { %> 
                     <li class="club-card">
                         <div class="club-card-header">
-                            <%= club.name %>
+                            <a href=<%=`/clubs/${club.id}`%>><%= club.name %></a>
                         </div>
                         <div class="club-card-members">
                             <i data-lucide="users-round"></i> <%= club.size %>

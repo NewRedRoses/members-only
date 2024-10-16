@@ -10,5 +10,15 @@ async function joinClubGet(req, res, next) {
   }
   res.redirect("/");
 }
+async function viewClubGet(req, res, next) {
+  try {
+    const club = await db.getClubInfo(req.params.id);
+    const posts = await db.getPostsFromClubId(req.params.id);
+    res.render("clubView", { club: club, posts: posts });
+  } catch (err) {
+    console.error("Error retrieving user:", err);
+    res.status(500).send("Internal Server Error");
+  }
+}
 
-module.exports = { clubsRouteGet, joinClubGet };
+module.exports = { clubsRouteGet, joinClubGet, viewClubGet };

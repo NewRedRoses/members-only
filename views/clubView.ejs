@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Club name</title>
+</head>
+<body>
+    <%- include("./partials/navbar.ejs") %>
+    <div class="content">
+        <div class="club-page top-container">
+            <div class="club-page title"><h1><%= club.name %></h1></div>
+            <div class="club-page description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quaerat.</p></div>
+        </div>
+        <%- include("./partials/loadAllPosts.ejs") %>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>

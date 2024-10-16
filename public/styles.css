@@ -27,7 +27,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  max-width: 70%;
+  max-width: 50%;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -188,4 +188,10 @@ textarea {
 }
 .add-post-form textarea {
   height: 100px;
+}
+.club-page.title {
+  color: #2c3e50;
+}
+.club-page.top-container {
+  border-bottom: 1px solid #bdc3c7;
 }
