@@ -12,6 +12,7 @@
         <div class="club-page top-container">
             <div class="club-page title"><h1><%= club.name %></h1></div>
             <div class="club-page description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quaerat.</p></div>
+            <a href=<%- `/clubs/${club.id}/join` %>><button class="club-card-join-btn">Join</button></a>
         </div>
         <%- include("./partials/loadAllPosts.ejs") %>
     </div>
