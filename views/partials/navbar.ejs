@@ -4,16 +4,19 @@
     <li class="navbar-item"><a href="/clubs" title="Clubs"><i data-lucide="users"></i></a></li>
   </ul>
   <ul class="right-icons">
-    <% if (currentUser) { %>
+    <% if (locals.user) { %>
       <li class="navbar-item">
-        <a href="logout" title="Log Out">
+        <span><%= locals.user.first_name %></span>
+        <a href="logout" id="log-out" title="Log Out">
           <i data-lucide="log-out"></i>
         </a> 
       </li>
     <% } else { %>
+      <li class="navbar-item">
         <a href="/login" title="Log in">
           <i data-lucide="log-in"></i>
         </a> 
+      </li>
       <% } %>
   </ul>
 </div>
