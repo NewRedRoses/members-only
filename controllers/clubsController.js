@@ -14,9 +14,9 @@ async function viewClubGet(req, res, next) {
   try {
     const club = await db.getClubInfo(req.params.id);
     const posts = await db.getPostsFromClubId(req.params.id);
-    res.render("clubView", { club: club, posts: posts });
+    res.render("clubView", { club: club, posts: posts, user: req.user });
   } catch (err) {
-    console.error("Error retrieving user:", err);
+    console.error("Error:", err);
     res.status(500).send("Internal Server Error");
   }
 }

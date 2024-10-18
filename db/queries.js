@@ -57,7 +57,7 @@ async function getClubInfo(clubId) {
   return rows[0];
 }
 async function getPostsFromClubId(clubId) {
-  const query = `SELECT * FROM posts WHERE club_id = $1`;
+  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name FROM posts INNER JOIN users ON posts.poster_user_id = users.id WHERE posts.club_id = $1`;
   const values = [clubId];
   const { rows } = await pool.query(query, values);
   return rows;
