@@ -10,7 +10,13 @@ async function addUserToDb(first_name, last_name, email, password) {
   }
 }
 async function getPosts() {
-  const query = `SELECT * FROM posts LIMIT 10`;
+  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name, clubs.name as club_name
+                 FROM posts
+                 INNER JOIN users
+                 ON posts.poster_user_id = users.id
+                 INNER JOIN clubs
+                 ON posts.club_id = clubs.id
+                 LIMIT 10`;
   const { rows } = await pool.query(query);
   return rows;
 }
@@ -51,16 +57,35 @@ async function getClubMemberAmount(clubId) {
   return rows[0].count;
 }
 async function getClubInfo(clubId) {
-  const query = `SELECT * from clubs where id = $1`;
+  const query = `SELECT * 
+                 FROM clubs
+                 WHERE id = $1`;
   const values = [clubId];
   const { rows } = await pool.query(query, values);
   return rows[0];
 }
 async function getPostsFromClubId(clubId) {
-  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name FROM posts INNER JOIN users ON posts.poster_user_id = users.id WHERE posts.club_id = $1`;
+  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name, clubs.name AS club_name
+                 FROM posts
+                 INNER JOIN users
+                 ON posts.poster_user_id = users.id
+                 INNER JOIN clubs
+                 ON posts.club_id = clubs.id
+                 WHERE posts.club_id = $1`;
   const values = [clubId];
   const { rows } = await pool.query(query, values);
   return rows;
+}
+async function getClubPasscode(clubId) {
+  const query = `SELECT passcode from clubs where id = $1`;
+  const values = [clubId];
+  const { rows } = await pool.query(query, values);
+  return rows[0].passcode;
+}
+async function createClub(name, description, passcode, creatorUserId) {
+  const query = `INSERT INTO clubs (name, description,passcode, owner_user_id) VALUES ($1,$2,$3,$4)`;
+  const values = [name, description, passcode, creatorUserId];
+  await pool.query(query, values);
 }
 module.exports = {
   addUserToDb,
@@ -73,4 +98,6 @@ module.exports = {
   getClubMemberAmount,
   getClubInfo,
   getPostsFromClubId,
+  getClubPasscode,
+  createClub,
 };

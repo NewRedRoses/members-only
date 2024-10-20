@@ -9,7 +9,7 @@
   <body>
     <%- include("./partials/navbar.ejs") %> 
     <div class="content">
-    <% if (locals.user) {%>
+    <% if (currentUser) {%>
         <h1 class="greeting">Most Recent Posts</h1>
         <div class="club-message-container">
           <form action="" method="POST" class="add-post-form">

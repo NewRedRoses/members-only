@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Add a new club</title>
+</head>
+<body>
+    <%- include("./partials/navbar.ejs") %>
+    <div class="content">
+        <% if (currentUser) { %> 
+            <h1>Create your club</h1>
+        <form action="" method="post">
+            <div class="club-name">
+                <label for="club-name">Club name</label>
+                <input type="text" id="club-name" name="clubName">
+            </div>
+
+            <div class="club-description">
+                <label for="club-description">Description</label>
+                <textarea name="clubDescription" id="club-description" placeholder="Describe what your club's all about!'"></textarea>
+            </div>
+
+            <div class="passcode">
+                <label for="passcode">Passcode (digits)</label>
+                <!-- <input type="text" id="passcode" name="passcode" placeholder="must be numbers!" inputmode="numeric" pattern="[0-9]*"> -->
+                <input type="password" name="passcode" id="passcode" placeholder="Must be numbers">
+            </div>
+            <button type="submit">Create club</button>
+        </form>
+        <% } else { %>
+        <p>You must be <a href="/login">logged in</a> to create clubs </p>
+        <% } %>
+    </div>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -3,14 +3,13 @@
           <li>
             <div class="post">
               <div class="post-header">
-                <% console.log(post) %>
                 <% if (user && (user.club_id == post.club_id)) { %> 
                     <span class="post-author"><%= post.poster_name %></span>
                   <% } else { %>
                     <span class="post-author">****</span>
                     <% } %>
-                posted on
-                <span class="post-club-name">club-name</span>
+                posted in
+                <span class="post-club-name"><%= post.club_name %></span>
               </div>
               <div class="post-content">
                 <h1 class="post-title"> <%= post.title %></h1>

@@ -9,7 +9,15 @@
 <body>
     <%- include("./partials/navbar.ejs") %>
     <div class="content">
-        <h1 class="greeting">Clubs</h1>
+        <h1 class="greeting">
+            Clubs
+            <% if (currentUser) { %> 
+                <a href="clubs/new" title="Create a new club">
+                        <i data-lucide="circle-plus"></i>
+                    </a>
+            <% } %>
+        </h1>
+        
         <ul class="clubs-container">
             <% clubs.forEach(club => { %> 
                     <li class="club-card">
@@ -20,10 +28,10 @@
                             <i data-lucide="users-round"></i> <%= club.size %>
                         </div>
                         <div class="club-card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, dolorum?
+                            <%= club.description %>
                         </div>
-                        <a href=<%-`/clubs/${club.id}/join`%>>
-                            <button class="club-card-join-btn">Join</button>
+                        <a href=<%-`/clubs/${club.id}`%>>
+                            <button class="club-card-join-btn">View Club</button>
                         </a>
                      </li>
             <% }) %>

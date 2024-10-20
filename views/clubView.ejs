@@ -11,8 +11,14 @@
     <div class="content">
         <div class="club-page top-container">
             <div class="club-page title"><h1><%= club.name %></h1></div>
-            <div class="club-page description"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, quaerat.</p></div>
-            <a href=<%- `/clubs/${club.id}/join` %>><button class="club-card-join-btn">Join</button></a>
+            <div class="club-page description"><p> <%= club.description %></p></div>
+                <% if (currentUser) { %>
+                    <form action="" method="post">
+                        <label for="passcode">Enter the passcode:</label>
+                        <input type="text" id="passcode" name="passcode" placeholder="Make sure its safe!" inputmode="numeric" pattern="[0-9]*">
+                        <button type="submit">Join</button>
+                    </form>
+                <% }%>
         </div>
         <%- include("./partials/loadAllPosts.ejs") %>
     </div>

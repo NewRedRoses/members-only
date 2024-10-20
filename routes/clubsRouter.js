@@ -5,10 +5,17 @@ const {
   clubsRouteGet,
   joinClubGet,
   viewClubGet,
+  viewClubPost,
+  createClubGet,
+  createClubPost,
 } = require("../controllers/clubsController");
 
 clubsRouter.get("", clubsRouteGet);
+
 clubsRouter.get("/:id", viewClubGet);
-clubsRouter.get("/:club_id/join", joinClubGet);
+clubsRouter.post("/:id", viewClubPost);
+
+clubsRouter.get("/new", createClubGet);
+clubsRouter.post("/new", createClubPost);
 
 module.exports = clubsRouter;

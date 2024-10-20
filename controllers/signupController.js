@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 async function signupRouteGet(req, res) {
   res.render("signup");
 }
-async function signupRoutePost(req, res) {
+async function signupRoutePost(req, res, next) {
   try {
     const { first_name, last_name, email, password } = req.body;
     bcrypt.hash(password, 10, async (err, hashedPassword) => {
