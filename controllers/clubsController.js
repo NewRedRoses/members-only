@@ -37,7 +37,7 @@ async function createClubGet(req, res, next) {
 async function createClubPost(req, res, next) {
   const { clubName, clubDescription, passcode } = req.body;
   await db.createClub(clubName, clubDescription, passcode, req.user.id);
-  res.redirect("clubs");
+  res.redirect("/clubs");
 }
 
 module.exports = {

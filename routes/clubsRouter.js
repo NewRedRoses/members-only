@@ -12,8 +12,8 @@ const {
 
 clubsRouter.get("", clubsRouteGet);
 
-clubsRouter.get("/:id", viewClubGet);
-clubsRouter.post("/:id", viewClubPost);
+clubsRouter.get("/:id/view", viewClubGet);
+clubsRouter.post("/:id/view", viewClubPost);
 
 clubsRouter.get("/new", createClubGet);
 clubsRouter.post("/new", createClubPost);

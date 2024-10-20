@@ -22,7 +22,7 @@
             <% clubs.forEach(club => { %> 
                     <li class="club-card">
                         <div class="club-card-header">
-                            <a href=<%=`/clubs/${club.id}`%>><%= club.name %></a>
+                            <a href=<%=`/clubs/${club.id}/view`%>><%= club.name %></a>
                         </div>
                         <div class="club-card-members">
                             <i data-lucide="users-round"></i> <%= club.size %>
@@ -30,7 +30,7 @@
                         <div class="club-card-description">
                             <%= club.description %>
                         </div>
-                        <a href=<%-`/clubs/${club.id}`%>>
+                        <a href=<%-`/clubs/${club.id}/view`%>>
                             <button class="club-card-join-btn">View Club</button>
                         </a>
                      </li>
