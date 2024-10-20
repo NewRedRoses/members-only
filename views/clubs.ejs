@@ -13,7 +13,7 @@
             Clubs
             <% if (currentUser) { %> 
                 <a href="clubs/new" title="Create a new club">
-                        <i data-lucide="circle-plus"></i>
+                        <i data-lucide="circle-plus" style="color: #2C3E50"></i>
                     </a>
             <% } %>
         </h1>
@@ -25,7 +25,7 @@
                             <a href=<%=`/clubs/${club.id}/view`%>><%= club.name %></a>
                         </div>
                         <div class="club-card-members">
-                            <i data-lucide="users-round"></i> <%= club.size %>
+                            <i data-lucide="users-round" style="color: #2C3E50"></i> <%= club.size %>
                         </div>
                         <div class="club-card-description">
                             <%= club.description %>

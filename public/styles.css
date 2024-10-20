@@ -27,7 +27,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  max-width: 50%;
+  max-width: 60%;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -73,7 +73,8 @@ ul.posts-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 450px;
+  /* max-width: 450px; */
+  width: 90%;
 }
 .post {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -120,19 +121,38 @@ ul.clubs-container {
   display: flex;
   flex-direction: column;
   padding: 15px;
-  gap: 5px;
+  gap: 10px;
   border: 1px solid #bdc3c7;
   background-color: #ffffff;
+  border-radius: 5px;
 }
-.club-card-header {
+.club-card-header a,
+.greeting i {
   font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+}
+.club-card-members {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #2c3e50;
 }
 .club-card-description {
   text-align: justify;
+  color: #2c3e50;
 }
 .club-card-join-btn {
   width: 120px;
   cursor: pointer;
+  background-color: #e4e9ec;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: #2c3e50;
+  font-family: "Inter";
+}
+.club-card-join-btn:hover {
+  border: 1px solid #bdc3c7;
 }
 .divider {
   padding-top: 10px;
@@ -194,4 +214,15 @@ textarea {
 }
 .club-page.top-container {
   border-bottom: 1px solid #bdc3c7;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.navbar-item {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #2c3e50;
+  gap: 10px;
 }
