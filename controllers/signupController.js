@@ -10,7 +10,7 @@ async function signupRoutePost(req, res, next) {
     bcrypt.hash(password, 10, async (err, hashedPassword) => {
       if (err) console.log("Something went wrong with hashing password");
       else {
-        db.addUserToDb(first_name, last_name, email, hashedPassword);
+        await db.addUserToDb(first_name, last_name, email, hashedPassword);
         res.redirect("/");
       }
     });
