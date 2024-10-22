@@ -27,7 +27,7 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  max-width: 60%;
+  max-width: 50%;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -73,8 +73,7 @@ ul.posts-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* max-width: 450px; */
-  width: 90%;
+  max-width: 450px;
 }
 .post {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -172,13 +171,15 @@ textarea {
   margin: 5px 0;
 }
 .add-post-form {
+  width: 100%;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
   gap: 10px;
 }
 .add-post-form label {
   font-weight: bold;
+  color: #2c3e50;
   padding-bottom: 5px;
 }
 .add-post-form button {
