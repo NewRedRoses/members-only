@@ -5,8 +5,8 @@ const passport = require("passport");
 const app = express();
 
 const path = require("node:path");
-app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: false }));
 app.use(passport.session());
