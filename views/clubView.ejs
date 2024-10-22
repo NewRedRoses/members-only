@@ -13,11 +13,15 @@
             <div class="club-page title"><h1><%= club.name %></h1></div>
             <div class="club-page description"><p> <%= club.description %></p></div>
                 <% if (currentUser) { %>
-                    <form action="" method="post">
-                        <label for="passcode">Enter the passcode:</label>
-                        <input type="password" name="passcode" id="passcode">
-                        <button type="submit">Join</button>
-                    </form>
+                    <% if (currentUser.club_id == club.id) { %>
+                            <%- include("./partials/createPost.ejs") %>
+                        <% } else {%>
+                            <form action="" method="post">
+                                <label for="passcode">Enter the passcode:</label>
+                                <input type="password" name="passcode" id="passcode">
+                                <button type="submit">Join</button>
+                            </form>
+                        <% } %>
                 <% }%>
         </div>
         <%- include("./partials/loadAllPosts.ejs") %>
