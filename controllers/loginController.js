@@ -2,6 +2,17 @@ const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const db = require("../db/queries");
 const bcrypt = require("bcryptjs");
+const { body, validationResult } = require("express-validator");
+
+const emptyMessage = "cannot be empty.";
+const validateLogin = [
+  body("username")
+    .notEmpty()
+    .withMessage(`username ${emptyMessage}`)
+    .isEmail()
+    .withMessage("Must be in email (@) format."),
+  body("password").notEmpty().withMessage(`password ${emptyMessage}`),
+];
 
 passport.use(
   new localStrategy(async (username, password, done) => {
@@ -41,10 +52,20 @@ async function loginRouteGet(req, res, next) {
   res.render("login");
 }
 function loginRoutePost(req, res, next) {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    console.log(errors);
+    return res.status(400).render("login", { errors: errors.array() });
+  }
+
   passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/",
+    failureRedirect: "/login",
   })(req, res, next);
 }
 
-module.exports = { loginRouteGet, loginRoutePost };
+module.exports = {
+  loginRouteGet,
+  loginRoutePost: [validateLogin, loginRoutePost],
+};
