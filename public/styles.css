@@ -227,3 +227,15 @@ textarea {
   color: #2c3e50;
   gap: 10px;
 }
+.err-arr-container {
+  list-style-type: none;
+  margin: 0;
+  color: #e74c3c;
+  font-family: monospace;
+  font-size: 1.1em;
+  padding: 10px;
+  border: 1px solid #c0392b;
+  background-color: white;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
