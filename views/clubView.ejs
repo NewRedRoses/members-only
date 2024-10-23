@@ -16,6 +16,7 @@
                     <% if (currentUser.club_id == club.id) { %>
                             <%- include("./partials/createPost.ejs") %>
                         <% } else {%>
+                              <%- include("partials/errors.ejs") %>
                             <form action="" method="post">
                                 <label for="passcode">Enter the passcode:</label>
                                 <input type="password" name="passcode" id="passcode">
