@@ -239,3 +239,6 @@ textarea {
   font-weight: bold;
   margin-bottom: 10px;
 }
+.err-item {
+  margin-bottom: 2px;
+}
