@@ -242,3 +242,25 @@ textarea {
 .err-item {
   margin-bottom: 2px;
 }
+.create-club-form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 10px;
+}
+.club-name,
+.club-description,
+.passcode {
+  display: flex;
+  flex-direction: column;
+}
+.club-page h1,
+.club-page label {
+  color: #2c3e50;
+}
+.club-page label {
+  font-weight: bold;
+}
+.club-page textarea {
+  height: 150px;
+}
