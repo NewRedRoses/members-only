@@ -8,22 +8,23 @@
 </head>
 <body>
     <%- include("./partials/navbar.ejs") %>
-    <div class="content">
+    <div class="content club-page">
         <% if (currentUser) { %> 
             <h1>Create your club</h1>
-        <form action="" method="post">
+            <%- include("./partials/errors.ejs") %>
+        <form action="" method="post" class="create-club-form">
             <div class="club-name">
-                <label for="club-name">Club name</label>
+                <label for="club-name">Club name:</label>
                 <input type="text" id="club-name" name="clubName">
             </div>
 
             <div class="club-description">
-                <label for="club-description">Description</label>
+                <label for="club-description">Description:</label>
                 <textarea name="clubDescription" id="club-description" placeholder="Describe what your club's all about!'"></textarea>
             </div>
 
             <div class="passcode">
-                <label for="passcode">Passcode (digits)</label>
+                <label for="passcode">Passcode:</label>
                 <input type="password" name="passcode" id="passcode">
             </div>
             <button type="submit">Create club</button>

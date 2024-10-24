@@ -2,12 +2,25 @@ const { body, validationResult } = require("express-validator");
 const db = require("../db/queries");
 
 const pinLengthErr = "Pin must be within 1 to 20 characters long.";
-
+const emptyErr = "cannot be empty.";
 const validatePin = [
   body("passcode")
     .trim()
     .notEmpty()
     .withMessage("Cannot be empty.")
+    .isLength({ min: 1, max: 20 })
+    .withMessage(pinLengthErr),
+];
+const validateClubCreation = [
+  body("clubName").notEmpty().withMessage(`Club's name ${emptyErr}`),
+  body("clubDescription")
+    .notEmpty()
+    .withMessage(`The description ${emptyErr}`)
+    .isLength({ max: 500 })
+    .withMessage("The description has to be less than 500 characters!"),
+  body("passcode")
+    .notEmpty()
+    .withMessage(`The passcode ${emptyErr}`)
     .isLength({ min: 1, max: 20 })
     .withMessage(pinLengthErr),
 ];
@@ -65,6 +78,11 @@ async function createClubGet(req, res, next) {
   res.render("createClub");
 }
 async function createClubPost(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("createClub", { errors: errors.array() });
+  }
+
   const { clubName, clubDescription, passcode } = req.body;
   await db.createClub(clubName, clubDescription, passcode, req.user.id);
   res.redirect("/clubs");
@@ -76,5 +94,5 @@ module.exports = {
   viewClubGet,
   viewClubPost: [validatePin, viewClubPost],
   createClubGet,
-  createClubPost,
+  createClubPost: [validateClubCreation, createClubPost],
 };
