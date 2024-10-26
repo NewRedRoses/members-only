@@ -11,7 +11,11 @@
     <div class="content">
     <% if (currentUser) {%>
         <h1 class="greeting">Most Recent Posts</h1>
-          <%- include("./partials/createPost.ejs") %>
+          <%  if (currentUser.club_id) {%>
+            <%- include("./partials/createPost.ejs") %>
+          <% } else {%>
+            <p>Please join a <a href="/clubs">club</a> to create your first post!</p>
+            <% } %>
       <div class="divider"></div>
       <%- include("./partials/loadAllPosts") %>
     <% } else {%>
