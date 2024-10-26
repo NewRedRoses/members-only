@@ -3,13 +3,26 @@
           <li>
             <div class="post">
               <div class="post-header">
-                <% if (user && (user.club_id == post.club_id)) { %> 
+                <div class="post-header-left">
+                  <% if (user && (user.club_id == post.club_id)) { %> 
                     <span class="post-author"><%= post.poster_name %></span>
                   <% } else { %>
                     <span class="post-author">****</span>
                     <% } %>
                 posted in
                 <span class="post-club-name"><%= post.club_name %></span>
+                </div>
+                <% if (currentUser) { %>
+                  <% if (post.club_owner_id === currentUser.id){ %>
+                  <div class="post-header-right">
+                  <span class="delete-post-btn">
+                    <a href="delete">
+                      <i data-lucide="circle-x" color="#ecf0f1"></i>
+                    </a>
+                  </span>
+                </div>
+                <% }%>
+              <%  } %>
               </div>
               <div class="post-content">
                 <h1 class="post-title"> <%= post.title %></h1>
