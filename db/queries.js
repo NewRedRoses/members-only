@@ -6,11 +6,11 @@ async function addUserToDb(first_name, last_name, email, password) {
     const values = [first_name, last_name, email, password];
     await pool.query(query, values);
   } catch (err) {
-    console.err(err);
+    console.error(err);
   }
 }
 async function getPosts() {
-  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name, clubs.name as club_name
+  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name, clubs.name as club_name, clubs.owner_user_id AS club_owner_id
                  FROM posts
                  INNER JOIN users
                  ON posts.poster_user_id = users.id

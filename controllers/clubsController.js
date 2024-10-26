@@ -1,10 +1,10 @@
 const { body, validationResult } = require("express-validator");
 const db = require("../db/queries");
 
-const pinLengthErr = "Pin must be within 1 to 20 characters long.";
+const pinLengthErr = "Passcode must be within 1 to 20 characters long.";
 const emptyErr = "cannot be empty.";
 const validatePin = [
-  body("passcode")
+  body("joinClubPasscode")
     .trim()
     .notEmpty()
     .withMessage("Cannot be empty.")
@@ -28,6 +28,7 @@ async function clubsRouteGet(req, res, next) {
   const clubs = await db.getClubs();
   res.render("clubs", { clubs: clubs });
 }
+// Deprecated
 async function joinClubGet(req, res, next) {
   // If user's logged in...
   if (req.user) {
@@ -64,13 +65,11 @@ async function viewClubPost(req, res, next) {
   }
 
   const dbPasscode = await db.getClubPasscode(req.params.id);
-  const userPasscode = req.body.passcode;
+  const userPasscode = req.body.joinClubPasscode;
 
   if (userPasscode == dbPasscode) {
     await db.updateUserClub(req.params.id, req.user.id);
-    res.redirect("/clubs");
-  } else {
-    res.redirect("/");
+    res.redirect(`/clubs/${req.params.id}/view`);
   }
 }
 
