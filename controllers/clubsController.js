@@ -7,7 +7,7 @@ const validatePin = [
   body("joinClubPasscode")
     .trim()
     .notEmpty()
-    .withMessage("Cannot be empty.")
+    .withMessage(`Passcode ${emptyErr}`)
     .isLength({ min: 1, max: 20 })
     .withMessage(pinLengthErr),
 ];
@@ -41,7 +41,6 @@ async function viewClubGet(req, res, next) {
   try {
     const club = await db.getClubInfo(req.params.id);
     const posts = await db.getPostsFromClubId(req.params.id);
-
     res.render("clubView", {
       club: club,
       posts: posts,
@@ -63,13 +62,22 @@ async function viewClubPost(req, res, next) {
       errors: errors.array(),
     });
   }
+  if (req.user) {
+    console.log(req.body);
+    await db.createPost(
+      req.body.message,
+      req.body.title,
+      req.user.id,
+      req.user.club_id
+    );
+  } else {
+    const dbPasscode = await db.getClubPasscode(req.params.id);
+    const userPasscode = req.body.joinClubPasscode;
 
-  const dbPasscode = await db.getClubPasscode(req.params.id);
-  const userPasscode = req.body.joinClubPasscode;
-
-  if (userPasscode == dbPasscode) {
-    await db.updateUserClub(req.params.id, req.user.id);
-    res.redirect(`/clubs/${req.params.id}/view`);
+    if (userPasscode == dbPasscode) {
+      await db.updateUserClub(req.params.id, req.user.id);
+      res.redirect(`/clubs/${req.params.id}/view`);
+    }
   }
 }
 
