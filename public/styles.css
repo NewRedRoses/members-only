@@ -240,7 +240,7 @@ textarea {
   padding-bottom: 10px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 450px;
 }
 .navbar-item {
   display: flex;
