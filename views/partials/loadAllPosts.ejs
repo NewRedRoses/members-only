@@ -10,7 +10,11 @@
                     <span class="post-author">****</span>
                     <% } %>
                 posted in
-                <span class="post-club-name"><%= post.club_name %></span>
+                <span class="post-club-name">
+                <a href=<%=`/clubs/${post.club_id}/view`%>>
+                  <%= post.club_name %>
+                </a>
+                </span>
                 </div>
                 <% if (currentUser) { %>
                   <% if (post.club_owner_id === currentUser.id){ %>

@@ -107,14 +107,21 @@ ul.posts-container {
   color: #ffffff;
   padding: 5px 10px;
   font-weight: 600;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 .post-author,
 .post-club-name {
   font-weight: bold;
 }
-.post-club-name {
-  font-style: italic;
+.post-club-name a {
+  text-decoration: none;
+  background-color: #2c3e50;
+  padding: 2px 5px;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.post-club-name a:hover {
+  text-decoration: underline;
 }
 .post .post-content {
   padding: 10px 25px;
@@ -296,7 +303,10 @@ textarea {
 .create-post-bottom-container a {
   font-weight: bold;
   text-decoration: none;
-  color: #3498db;
+  background-color: #2c3e50;
+  padding: 2px 5px;
+  color: #ffffff;
+  border-radius: 5px;
 }
 .create-post-bottom-container a:hover {
   text-decoration: underline;
