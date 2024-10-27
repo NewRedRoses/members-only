@@ -15,6 +15,8 @@ clubsRouter.get("", clubsRouteGet);
 clubsRouter.get("/:id/view", viewClubGet);
 clubsRouter.post("/:id/view", viewClubPost);
 
+clubsRouter.post("/:id/join", joinClubGet);
+
 clubsRouter.get("/new", createClubGet);
 clubsRouter.post("/new", createClubPost);
 

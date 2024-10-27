@@ -28,13 +28,19 @@ async function clubsRouteGet(req, res, next) {
   const clubs = await db.getClubs();
   res.render("clubs", { clubs: clubs });
 }
-// Deprecated
+
 async function joinClubGet(req, res, next) {
   // If user's logged in...
   if (req.user) {
-    await db.updateUserClub(req.params.club_id, req.user.id);
+    const dbPasscode = await db.getClubPasscode(req.params.id);
+    const userPasscode = req.body.joinClubPasscode;
+    if (userPasscode == dbPasscode) {
+      await db.updateUserClub(req.params.id, req.user.id);
+      res.redirect(`/clubs/${req.params.id}/view`);
+    }
   }
-  res.redirect("/");
+
+  // res.redirect("/");
 }
 
 async function viewClubGet(req, res, next) {
@@ -62,23 +68,12 @@ async function viewClubPost(req, res, next) {
       errors: errors.array(),
     });
   }
-  if (req.user) {
-    console.log(req.body);
-    await db.createPost(
-      req.body.message,
-      req.body.title,
-      req.user.id,
-      req.user.club_id
-    );
-  } else {
-    const dbPasscode = await db.getClubPasscode(req.params.id);
-    const userPasscode = req.body.joinClubPasscode;
-
-    if (userPasscode == dbPasscode) {
-      await db.updateUserClub(req.params.id, req.user.id);
-      res.redirect(`/clubs/${req.params.id}/view`);
-    }
-  }
+  await db.createPost(
+    req.body.message,
+    req.body.title,
+    req.user.id,
+    req.user.club_id
+  );
 }
 
 async function createClubGet(req, res, next) {
