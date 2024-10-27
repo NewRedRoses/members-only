@@ -17,7 +17,15 @@ const validatePost = [
 
 async function indexRouteGet(req, res, next) {
   const posts = await db.getPosts();
-  res.render("index", { user: req.user, posts: posts });
+  let userClubDetails = undefined;
+  if (req.user) {
+    userClubDetails = await db.getClubInfo(req.user.club_id);
+  }
+  res.render("index", {
+    user: req.user,
+    posts: posts,
+    club: userClubDetails,
+  });
 }
 async function indexRoutePost(req, res, next) {
   const errors = validationResult(req);

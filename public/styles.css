@@ -271,3 +271,16 @@ textarea {
 .club-page textarea {
   height: 150px;
 }
+.create-post-bottom-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.create-post-bottom-container a {
+  font-weight: bold;
+  text-decoration: none;
+  color: #3498db;
+}
+.create-post-bottom-container a:hover {
+  text-decoration: underline;
+}
