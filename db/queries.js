@@ -65,7 +65,7 @@ async function getClubInfo(clubId) {
   return rows[0];
 }
 async function getPostsFromClubId(clubId) {
-  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name, clubs.name AS club_name
+  const query = `SELECT posts.id, posts.club_id, posts.date_posted, posts.title, posts.message, users.first_name ||' ' || users.last_name AS poster_name, clubs.name AS club_name, clubs.owner_user_id as club_owner_id, users.id as user_id
                  FROM posts
                  INNER JOIN users
                  ON posts.poster_user_id = users.id
@@ -87,6 +87,21 @@ async function createClub(name, description, passcode, creatorUserId) {
   const values = [name, description, passcode, creatorUserId];
   await pool.query(query, values);
 }
+async function deletePostFromId(postId) {
+  const query = `DELETE FROM posts WHERE id = $1`;
+  const values = [postId];
+  await pool.query(query, values);
+}
+async function getPostDetails(postId) {
+  const query = `SELECT posts.id as post_id, posts.title as post_title, posts.poster_user_id, clubs.id as club_id, clubs.owner_user_id as club_owner_id 
+                 FROM posts
+                 INNER JOIN clubs
+                 ON posts.club_id = clubs.id
+                 WHERE posts.id = $1`;
+  const values = [postId];
+  const { rows } = await pool.query(query, values);
+  return rows[0];
+}
 module.exports = {
   addUserToDb,
   getPosts,
@@ -100,4 +115,6 @@ module.exports = {
   getPostsFromClubId,
   getClubPasscode,
   createClub,
+  deletePostFromId,
+  getPostDetails,
 };

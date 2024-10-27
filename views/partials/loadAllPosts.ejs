@@ -16,7 +16,7 @@
                   <% if (post.club_owner_id === currentUser.id){ %>
                   <div class="post-header-right">
                   <span class="delete-post-btn">
-                    <a href="delete">
+                    <a href=<%-`/delete/post/${post.id}`%>>
                       <i data-lucide="circle-x" color="#ecf0f1"></i>
                     </a>
                   </span>
