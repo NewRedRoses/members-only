@@ -14,7 +14,6 @@
             <div class="club-page description"><p> <%= club.description %></p></div>
                 <% if (currentUser) { %>
                     <% if (currentUser.club_id == club.id) { %>
-                            <%- include("./partials/errors.ejs") %>
                             <%- include("./partials/createPost.ejs") %>
                         <% } else {%>
                               <%- include("partials/errors.ejs") %>
