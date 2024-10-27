@@ -12,22 +12,26 @@
       <h1 class="greeting">Login</h1>
       <%- include("./partials/errors.ejs") %>
     <form action="/login" method="POST" class="login-form">
-      <label for="username">Email</label>
-      <input
-        type="email"
-        name="username"
-        id="username"
-        placeholder="test@test.com"
-      />
+      <div class="login-form-top">
+        <label for="username">Email</label>
+        <input
+          type="email"
+          name="username"
+          id="username"
+          placeholder="test@test.com"
+        />
 
-      <label for="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="123456"
-      />
-      <button class="login-btn submit-btn">Login</button>
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="123456"
+        />
+      </div>
+      <div class="login-form-bottom">
+        <button class="login-btn submit-btn">Login</button>
+      </div>
     </form>
         <div>Don't have an account? <a href="signup" class="signup-link">Sign Up!</a></div>
         </div>
