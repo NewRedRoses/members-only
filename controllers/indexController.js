@@ -29,12 +29,14 @@ async function indexRouteGet(req, res, next) {
 }
 async function indexRoutePost(req, res, next) {
   const errors = validationResult(req);
+  const clubInfo = await db.getClubInfo(req.user.club_id);
 
   if (!errors.isEmpty()) {
     return res.status(400).render("index", {
       user: req.user,
       posts: await db.getPosts(),
       errors: errors.array(),
+      club: clubInfo,
     });
   }
 
