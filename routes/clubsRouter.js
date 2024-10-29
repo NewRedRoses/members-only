@@ -13,7 +13,7 @@ const {
 clubsRouter.get("", clubsRouteGet);
 
 clubsRouter.get("/:id/view", viewClubGet);
-clubsRouter.post("/:id/view", viewClubPost);
+clubsRouter.post("/:id/new", viewClubPost);
 
 clubsRouter.post("/:id/join", joinClubGet);
 

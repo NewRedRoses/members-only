@@ -24,6 +24,10 @@ const validateClubCreation = [
     .isLength({ min: 1, max: 20 })
     .withMessage(pinLengthErr),
 ];
+const validateClubPost = [
+  body("title").optional(),
+  body("message").notEmpty().withMessage(`Body of message ${emptyErr}!`),
+];
 async function clubsRouteGet(req, res, next) {
   const clubs = await db.getClubs();
   res.render("clubs", { clubs: clubs });
@@ -39,8 +43,6 @@ async function joinClubGet(req, res, next) {
       res.redirect(`/clubs/${req.params.id}/view`);
     }
   }
-
-  // res.redirect("/");
 }
 
 async function viewClubGet(req, res, next) {
@@ -74,6 +76,7 @@ async function viewClubPost(req, res, next) {
     req.user.id,
     req.user.club_id
   );
+  res.redirect(`/clubs/${req.user.club_id}/view`);
 }
 
 async function createClubGet(req, res, next) {
@@ -92,9 +95,9 @@ async function createClubPost(req, res, next) {
 
 module.exports = {
   clubsRouteGet,
-  joinClubGet,
+  joinClubGet: [validatePin, joinClubGet],
   viewClubGet,
-  viewClubPost: [validatePin, viewClubPost],
+  viewClubPost: [validateClubPost, viewClubPost],
   createClubGet,
   createClubPost: [validateClubCreation, createClubPost],
 };
