@@ -65,6 +65,7 @@ body {
 .greeting,
 .post-content {
   color: #2c3e50;
+  min-width: 300px;
 }
 a.sign-up {
   color: #3498db;
